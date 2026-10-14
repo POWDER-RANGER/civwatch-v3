@@ -20,6 +20,7 @@
             <div>
                 <h1 class="text-4xl font-bold tracking-widest">CIVWATCH<span class="text-red-500">V3</span></h1>
                 <p class="text-sm text-green-400">REFERENCE RF VISUALIZER • SOURCE MODE DISCLOSED</p>
+                <p id="observation-mode" class="text-xs text-yellow-300 mt-1">Waiting for observation source…</p>
             </div>
             <div class="flex gap-8 text-sm">
                 <div>Reference Score: <span id="threat-score" class="text-2xl font-bold text-yellow-400">—</span></div>
@@ -96,6 +97,7 @@
         function updateUI(data) {
             document.getElementById('threat-score').textContent = Number.isFinite(data.score) ? data.score : '—';
             document.getElementById('sensor-count').textContent = data.sensor_id ? '1' : '0';
+            document.getElementById('observation-mode').textContent = data.synthetic ? 'SYNTHETIC DEMO — NOT A FIELD MEASUREMENT' : 'DEVICE-REPORTED METADATA — NOT RAW RF';
 
             // Domain status
             const domainsDiv = document.getElementById('domains');
