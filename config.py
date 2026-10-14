@@ -7,12 +7,12 @@ load_dotenv()
 
 class Config:
     SENSOR_ID: str = os.getenv("SENSOR_ID", "civwatch-sensor-01")
-    HOST: str = os.getenv("HOST", "0.0.0.0")
+    HOST: str = os.getenv("HOST", "127.0.0.1")
     PORT: int = int(os.getenv("PORT", "8000"))
     DB_URL: str = os.getenv("DATABASE_URL", "sqlite:///./civwatch.db")
-    DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
+    DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
     SCORER_VERSION: str = "3.0.1"
     BASELINE_VERSION: str = "3.0.0"
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "supersecretkeyforcivwatch")
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "")
 
 config = Config()
