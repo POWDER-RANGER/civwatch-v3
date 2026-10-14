@@ -45,6 +45,14 @@ cp .env.example .env
 
 Review configuration before exposing the service beyond localhost.
 
+## Reference API contracts
+
+- `GET /api/health` identifies the service as `reference_only` and reports whether the stream is using device metadata or synthetic demo data.
+- `GET /api/capabilities` describes which domains are synthetic/reference-only and lists measurement limitations.
+- WebSocket observations include `observation_mode` and `synthetic` so clients can label the source rather than assuming all events are live RF.
+
+CIVWATCH v3 is a predecessor/reference implementation. Scores, flags, and synthetic samples are not evidence of an interceptor or malicious activity. New production integration should use Cell Titan's bounded observation contract.
+
 ## Migration path
 
 ~~~text

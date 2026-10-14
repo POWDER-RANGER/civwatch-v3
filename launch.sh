@@ -14,7 +14,6 @@ echo "Using SQLite fallback for seamless demo (Postgres optional)"
 
 # Wait for DB
 echo "⏳ Waiting for database..."
-sleep 8
 
 # Initialize DB if needed
 echo "🛠️  Ensuring database schema..."
@@ -26,4 +25,4 @@ init_db()
 # Launch the app
 echo "🌐 Starting FastAPI server..."
 echo "📍 Dashboard available at http://localhost:8000"
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn main:app --host "${HOST:-127.0.0.1}" --port "${PORT:-8000}"
