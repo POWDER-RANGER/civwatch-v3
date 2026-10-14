@@ -92,7 +92,7 @@ async def websocket_endpoint(websocket: WebSocket):
             }
             
             normalized = normalize_observation(obs_raw, "cellular", config.SENSOR_ID)
-            signed = sign_observation(normalized.dict())
+            signed = sign_observation({**normalized.dict(), "observation_mode": observation_mode, "synthetic": observation_mode == "synthetic_demo"})
             save_observation(signed)
             
             correlated = correlator.correlate([signed])
